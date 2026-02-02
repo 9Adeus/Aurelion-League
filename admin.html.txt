@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<style>
+body{background:#12001f;color:#ffd36a;font-family:Arial;padding:40px}
+input,button{padding:10px;margin:5px 0;width:250px}
+button{background:#3b155f;color:#ffd36a;border:none;cursor:pointer}
+</style>
+</head>
+<body>
+
+<h2>Admin Giriş</h2>
+<input type="password" id="p" placeholder="Şifre">
+<button onclick="g()">Giriş</button>
+
+<div id="panel" style="display:none">
+<h3>Takım Ekle</h3>
+<input id="n" placeholder="Takım adı">
+<button onclick="a()">Ekle</button>
+</div>
+
+<script>
+const s="Claxinho9911";
+function g(){
+if(p.value===s){panel.style.display="block"}
+else alert("Şifre yanlış");
+}
+function a(){
+let t=JSON.parse(localStorage.getItem("teams"))||[];
+t.push({name:n.value,played:0,win:0,draw:0,lose:0,points:0});
+localStorage.setItem("teams",JSON.stringify(t));
+alert("Takım eklendi");
+n.value="";
+}
+</script>
+
+</body>
+</html>

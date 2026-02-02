@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Aurelion League</title>
+<style>
+body{background:#1b1026;color:#ffd36a;font-family:Arial;margin:0}
+.sidebar{width:220px;height:100vh;background:#3b155f;position:fixed}
+.sidebar a{color:#ffd36a;display:block;padding:15px;text-decoration:none}
+.content{margin-left:240px;padding:20px}
+table{width:100%;background:#12001f;border-collapse:collapse}
+th,td{padding:10px;border-bottom:1px solid #3b155f;text-align:center}
+th{background:#3b155f}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+<h2>Aurelion League</h2>
+<a>Puan Durumu</a>
+<a>İstatistik</a>
+<a href="admin.html">Admin</a>
+</div>
+<div class="content">
+<h1>Lig Tablosu</h1>
+<table>
+<thead>
+<tr><th>#</th><th>Takım</th><th>O</th><th>G</th><th>B</th><th>M</th><th>P</th></tr>
+</thead>
+<tbody id="tablo"></tbody>
+</table>
+</div>
+
+<script>
+let t=JSON.parse(localStorage.getItem("teams"))||[];
+t.sort((a,b)=>b.points-a.points);
+let h="";
+t.forEach((x,i)=>{
+h+=`<tr><td>${i+1}</td><td>${x.name}</td><td>${x.played}</td><td>${x.win}</td><td>${x.draw}</td><td>${x.lose}</td><td><b>${x.points}</b></td></tr>`;
+});
+document.getElementById("tablo").innerHTML=h;
+</script>
+
+</body>
+</html>
